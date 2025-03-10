@@ -17,9 +17,9 @@ describe('Orange HRM test', () => {
     })
   it('login fail', ()=>{
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get("[name='username']").type('Test')
-    cy.get("[name='password']").type('test')
-    cy.get(".oxd-button--medium").click()
+    cy.get(selectorList.usernameFild).type('Test')
+    cy.get(selectorList.passewordFild).type('test')
+    cy.get(selectorList.loginButton).click()
     cy.get(selectorList.wrongCredencialAlert)
 
   })
