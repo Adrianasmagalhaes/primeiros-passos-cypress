@@ -1,0 +1,25 @@
+nome: CI
+on:
+ [ push]
+ jobs:
+build-test:
+runs-on: ubuntu-20.04
+steps:
+- name: Checkout
+  uses: actions/checkout@v2
+  -name: Cypres Test 
+  uses: cypress-io/github-action@v2
+  with:
+  start: 'npm run dev'
+  build: 'npm run build' 
+
+  uses: actions/upload-artifact@v2
+  if: always()
+  whith:
+    name: cypress-results
+    path: |
+      cypress/screenshots
+      cypress/videos
+      cypress/results
+
+    if-no-files-found: ignore
