@@ -7,17 +7,16 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Cypress Test
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
           start: 'npm run dev'
           build: 'npm run build'
 
-      - name: Upload Cypress Artifacts
+      - uses: actions/upload-artifact@v3
         if: always()
-        uses: actions/upload-artifact@v2
         with:
           name: cypress-results
           path: |
